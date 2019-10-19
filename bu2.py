@@ -64,7 +64,6 @@ def input_list():
         for line in f:
             line = line.rstrip()
             line = line.split()
-            l.append(a)
             one = int(line[0])
             two = int(line[1])
             l.append((one, two))

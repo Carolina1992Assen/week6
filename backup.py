@@ -1,3 +1,4 @@
+import math
 """
 judge A says N: P(A, N) = 0.9
 judge A says R: P(A, R) = 0.1
@@ -57,7 +58,6 @@ k = 0.40, which indicates fair agreement.
 
 """
 
-
 def input_list():
     l = []
     with open('tk.txt') as f:
@@ -70,20 +70,41 @@ def input_list():
             l.append((one, two))
     return l
 
-def po():
-    yes = 0
-    no = 0
-    l = input_list()
-    len_l = len(input_list())
-    for item in l:
-        if item[0] == 1 and item[1] == 1:
-            yes += 1
-        if item[0] == 0 and item[1] == 0:
-            no += 1
-    p_o = (yes + no) / len_l
-    return p_o
 
-def pe():
+
+
+def input_list():
+    #l = []
+    full_list = []
+    with open('w.txt') as f:
+        for line in f:
+            line = line.strip()
+            line = line.split()
+            for item in line:
+                full_list.append(item)
+            #one = int(line[0])
+            ##two = int(line[1])
+            #l.append((one, two))
+    return set(full_list)
+
+def amount_of_input():
+    l = input_list()
+    count_input = set(l)
+    return(count_input)
+
+
+def po():
+    l = input_list()
+    for item in amount_of_input():
+
+            '''if item[0] == amount_of_input()[i] and item[1] == amount_of_input()[i]:
+                yes += 1
+            if item[0] == 0 and item[1] == 0:
+                no += 1
+        p_o = (yes + no) / len_l
+    return p_o'''
+
+"""def pe():
     l = input_list()
     len_l = len(l)
 
@@ -122,12 +143,12 @@ def k():
     Po = po()
     Pe = pe()
     kk = (Po - Pe) / (1 - Pe)
-    return kk
+    return kk"""
 
 
 
 def main():
-    print(k())
+    print(po())
 
 
 
