@@ -114,7 +114,9 @@ def pe():
 
     prob_yes = random_yes + random_no
 
-    return prob_yes
+    return (ya,yb,na,nb)
+
+    # (Counter({'1': 98, '0': 28}), Counter({'1': 82, '0': 44}))
 
 
 def k():

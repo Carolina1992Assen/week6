@@ -64,11 +64,11 @@ def input_list():
         for line in f:
             line = line.rstrip()
             line = line.split()
-            l.append(a)
             one = int(line[0])
             two = int(line[1])
             l.append((one, two))
     return l
+
 
 def po():
     yes = 0
@@ -81,7 +81,7 @@ def po():
         if item[0] == 0 and item[1] == 0:
             no += 1
     p_o = (yes + no) / len_l
-    return p_o
+    return (p_o)
 
 def pe():
     l = input_list()
@@ -103,6 +103,8 @@ def pe():
             yb = yb + 1
 
 
+
+
     random_yes_a = ya/len_l
     random_yes_b = yb/len_l
 
@@ -115,19 +117,21 @@ def pe():
 
     prob_yes = random_yes + random_no
 
-    return prob_yes
+    return (random_yes_a, random_yes_b, random_no_a, random_no_b)
+
+    #(Counter({'1': 98, '0': 28}), Counter({'1': 82, '0': 44}))
 
 
-def k():
+"""def k():
     Po = po()
     Pe = pe()
     kk = (Po - Pe) / (1 - Pe)
-    return kk
+    return kk"""
 
 
 
 def main():
-    print(k())
+    print(pe())
 
 
 

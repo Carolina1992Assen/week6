@@ -1,4 +1,6 @@
 import math
+from collections import Counter
+import numpy as np
 """
 judge A says N: P(A, N) = 0.9
 judge A says R: P(A, R) = 0.1
@@ -58,53 +60,125 @@ k = 0.40, which indicates fair agreement.
 
 """
 
+
+def multiplyList(myList):
+    # Multiply elements one by one
+    result = 1
+    for x in myList:
+        result = result * x
+    return result
+
+
 def input_list():
+    jo = []
+    a_list = []
+    b_list = []
+    r = []
     l = []
-    with open('tk.txt') as f:
+    same = []
+    ones = []
+    twos = []
+    with open('w.txt') as f:
         for line in f:
             line = line.rstrip()
             line = line.split()
-            l.append(a)
-            one = int(line[0])
-            two = int(line[1])
-            l.append((one, two))
-    return l
-
-
-
-
-def input_list():
-    #l = []
-    full_list = []
-    with open('w.txt') as f:
-        for line in f:
-            line = line.strip()
-            line = line.split()
             for item in line:
-                full_list.append(item)
-            #one = int(line[0])
-            ##two = int(line[1])
-            #l.append((one, two))
-    return set(full_list)
+                r.append(item)
+            one = line[0]
+            two = line[1]
+            l.append((one, two))
+            ones.append(one)
+            twos.append(two)
 
-def amount_of_input():
+        ones = Counter(ones)
+        twos = Counter(twos)
+
+        unique = set(r)
+        lc = Counter(l)
+        for k, v in lc.items():
+            if k[0] == k[1]:
+                same.append(v)
+
+        all_same = sum(same)
+        len_l = len(l)
+
+        # (80, 26) ones
+
+        po =  all_same / len_l
+
+
+        for v1, v2 in zip(ones.values(), twos.values()):
+            vv = v1 / len_l
+            vv2 = v2 / len_l
+            a_list.append(vv)
+            b_list.append(vv2)
+        # (0.7777777777777778, 0.6507936507936508, 0.2222222222222222, 0.3492063492063492) 0.07760141093474426, 0.5061728395061729]
+
+        for i, j in zip(a_list, b_list):
+            c = i * j
+            jo.append(c)
+
+
+        s_jo = sum(jo)
+
+        kk = (po - s_jo) / (1 - s_jo)
+
+
+
+        return kk
+
+
+
+
+
+
+
+
+
+
+
+def dict():
+
+
+ "def unique():\n"
+ "    #l = []\n"
+ "    full_list = []\n"
+ "    with open('w.txt') as f:\n"
+ "        for line in f:\n"
+ "            line = line.strip()\n"
+ "            line = line.split()\n"
+ "            for item in line:\n"
+ "                full_list.append(item)\n"
+ "    return set(full_list)\n"
+ "\n"
+ "def ip():\n"
+ "    l = input_list()\n"
+ "    numl = []\n"
+ "    un = unique()\n"
+ "    for i in range(len(un)):\n"
+ "        numl.append(i)\n"
+ "\n"
+ "\n"
+ "\n"
+ "\n"
+ "def amount_of_input():\n"
+ "    l = input_list()\n"
+ "    count_input = set(l)\n"
+ "    return(count_input)"
+
+
+"""def po():
     l = input_list()
-    count_input = set(l)
-    return(count_input)
+    for item in 
 
-
-def po():
-    l = input_list()
-    for item in amount_of_input():
-
-            '''if item[0] == amount_of_input()[i] and item[1] == amount_of_input()[i]:
+            if item[0] == amount_of_input()[i] and item[1] == amount_of_input()[i]:
                 yes += 1
             if item[0] == 0 and item[1] == 0:
                 no += 1
         p_o = (yes + no) / len_l
-    return p_o'''
+    return p_o
 
-"""def pe():
+def pe():
     l = input_list()
     len_l = len(l)
 
@@ -148,7 +222,7 @@ def k():
 
 
 def main():
-    print(po())
+    print(input_list())
 
 
 
